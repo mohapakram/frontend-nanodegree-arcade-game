@@ -70,17 +70,19 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+let Player;
 
-let Player = function (x , y, speed){
+
+Player = function (x , y, speed){
   this.y = y;
   this.x = x;
   this.speed = speed;
   this.sprite = 'images/char-boy.png';
-  this.render = ()=> {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  }
 }
 
+Player.prototype.render = ()=> {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
 
 Player.prototype.update = ()=>{
    // leave it for now
