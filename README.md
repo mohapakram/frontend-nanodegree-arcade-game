@@ -12,7 +12,7 @@ Frogger Arcade is a variation of the classic Frogger arcade game.
 ### To run the application:
 
 1. Download the GitHub zip file or clone the repository onto your local workstation:
-	* git clone [https://github.com/alexsales/frontend-nanodegree-frogger-arcade-game.git/]()
+	* git clone [https://github.com/mohapakram/frontend-nanodegree-arcade-game]
 2. open `index.html` file in google chrome.
 
 ### how to play
