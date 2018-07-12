@@ -80,11 +80,11 @@ Player = function (x , y, speed){
   this.sprite = 'images/char-boy.png';
 }
 
-Player.prototype.render = ()=> {
+Player.prototype.render = function (){
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-Player.prototype.update = ()=>{
+Player.prototype.update = function (){
    // leave it for now
 };
 
