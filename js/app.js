@@ -1,5 +1,4 @@
 'use strict';
-
 // Enemies our player must avoid
 var Enemy = function(x , y, speed) {
     // Variables applied to each of our instances go here,
@@ -25,40 +24,19 @@ Enemy.prototype.update = function(dt) {
       this.x = 0;
     }
 
-  this.checkCollision(this);
+  this.checkCollision();
   };
 
-    Enemy.prototype.checkCollision = function(anEnemy) {
+    Enemy.prototype.checkCollision = function() {
       // check for collision between enemy and player
       if (
-          player.y + 131 >= anEnemy.y + 90
-          && player.x + 25 <= anEnemy.x + 88
-          && player.y + 73 <= anEnemy.y + 135
-          && player.x + 76 >= anEnemy.x + 11) {
+          player.y + 131 >= this.y + 90
+          && player.x + 25 <= this.x + 88
+          && player.y + 73 <= this.y + 135
+          && player.x + 76 >= this.x + 11) {
           console.log('collided');
           player.x = 202.5;
           player.y = 383;
-      }
-
-      // check for player reaching top of canvas and winning the game
-      // if player wins, add 1 to the score and level
-      // pass score as an argument to the increaseDifficulty function
-      if (player.y + 63 <= 0) {
-          player.x = 202.5;
-          player.y = 383;
-          console.log('you made it!');
-      }
-
-      // check if player runs into left, bottom, or right canvas walls
-      // prevent player from moving beyond canvas wall boundaries
-      if (player.y > 383 ) {
-          player.y = 383;
-      }
-      if (player.x > 402.5) {
-          player.x = 402.5;
-      }
-      if (player.x < 2.5) {
-          player.x = 2.5;
       }
     };
 
@@ -87,21 +65,38 @@ Player.prototype.render = function (){
 }
 
 Player.prototype.update = function (){
-   // leave it for now
+  // pass score as an argument to the increaseDifficulty function
+  if (this.y + 63 <= 0) {
+      this.x = 202.5;
+      this.y = 383;
+      console.log('you made it!');
+  }
+
+  // check if this runs into left, bottom, or right canvas walls
+  // prevent this from moving beyond canvas wall boundaries
+  if (this.y > 383 ) {
+      this.y = 383;
+  }
+  if (this.x > 402.5) {
+      this.x = 402.5;
+  }
+  if (this.x < 2.5) {
+      this.x = 2.5;
+  }
 };
 
 Player.prototype.handleInput = function(keyPress) {
     if (keyPress == 'left') {
-        player.x -= player.speed;
+        this.x -= this.speed;
     }
     if (keyPress == 'up') {
-        player.y -= player.speed - 20;
+        this.y -= this.speed - 20;
     }
     if (keyPress == 'right') {
-        player.x += player.speed;
+        this.x += this.speed;
     }
     if (keyPress == 'down') {
-        player.y += player.speed - 20;
+        this.y += this.speed - 20;
     }
 };
 
